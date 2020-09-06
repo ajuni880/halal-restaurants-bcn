@@ -3,7 +3,6 @@ const Scraper = require('./models/scraper');
 const { tripAdvisor } = require('./models/sources');
 const CACHE_TIME = 3600 * 1000;
 const app = express();
-let counter = 0;
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
@@ -32,8 +31,7 @@ const getData = async () => {
 app.get('/', async (req, res) => {
   const data = await getData();
   const currentYear = new Date().getFullYear();
-  counter++;
-  res.render('index', { data, currentYear, counter });
+  res.render('index', { data, currentYear });
 });
 
 //getData();

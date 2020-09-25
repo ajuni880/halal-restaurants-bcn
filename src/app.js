@@ -20,8 +20,6 @@ const getData = async () => {
     const data = await sc.scrape();
     cache = data;
     cacheTime = Date.now();
-
-    console.log('no cache');
     return data;
   } catch (e) {
     console.log(e);
@@ -33,7 +31,5 @@ app.get('/', async (req, res) => {
   const currentYear = new Date().getFullYear();
   res.render('index', { data, currentYear });
 });
-
-//getData();
 
 module.exports = app;
